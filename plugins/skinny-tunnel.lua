@@ -2,8 +2,8 @@
 --   Skinny IPv6-in-IPv6 Extension Header
 --   https://www.ietf.org/id/draft-smith-skinny-ipv6-in-ipv6-tunnelling-00.txt
 --
---  0                   1                   2                   3
---  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+--   0                   1                   2                   3
+--   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 --  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 --  |  Next Header  |  Hdr Ext Len  |     Type      |     Length    |
 --  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -40,9 +40,9 @@ function skinny_proto.dissector(buffer, pinfo, tree)
 		local subtree = tree:add(skinny_proto, buffer(58, 20))
 		subtree:add(f.reserved, buffer(58, 1))
 		subtree:add(f.inner_payload_length, buffer(59, 2))
-    	subtree:add(f.inner_hop_limit, buffer(61, 1))
-    	subtree:add(f.inner_src_addr, buffer(62, 8))
-    	subtree:add(f.inner_dst_addr, buffer(70, 8))
+		subtree:add(f.inner_hop_limit, buffer(61, 1))
+		subtree:add(f.inner_src_addr, buffer(62, 8))
+		subtree:add(f.inner_dst_addr, buffer(70, 8))
 	end
 end
 
