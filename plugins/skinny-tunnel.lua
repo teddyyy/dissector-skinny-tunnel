@@ -36,7 +36,7 @@ f.inner_dst_addr        = ProtoField.new("Inner DA 64 bit Prefix", "skinny.inner
 
 
 function skinny_proto.dissector(buffer, pinfo, tree)
-	if ipv6_opt_type then
+	if ipv6_opt_type() then
 		local subtree = tree:add(skinny_proto, buffer(58, 20))
 		subtree:add(f.reserved, buffer(58, 1))
 		subtree:add(f.inner_payload_length, buffer(59, 2))
